@@ -64,7 +64,9 @@ class LinkedList(object):
 		assert self.size > 0
 		print("\nTo pop the last item, we must remove the link"),
 		print("between the second to last item and the node to delete")
+		#Find the second to last item
 		node = self._search(self.size-2)
+		#Set it's link to none so we lose the last item
 		node.link = None
 		self.size -= 1
 		self.printStruct()
@@ -72,11 +74,17 @@ class LinkedList(object):
 
 	def insert(self, position, item):
 		assert position <=  self.size-1
+		#Find the node before where we want to insert
 		prevNode = self._search(position-1)
+		#pass the link of the previous node into constructor
+		#so now the new node will point to the same thing
+		#as the previous node
 		newNode = ListNode(item, prevNode.link)
 
 		print"To insert a new node containing", item, "at position", position
 		self.printInsert(position-1, newNode.item)
+
+		#set the link of the previous node to point to the new node
 		prevNode.link = newNode
 		self.size += 1
 		self.printStruct()
@@ -95,7 +103,9 @@ class LinkedList(object):
 
 
 
-
+#All the following code is for the visuals
+#Don't bother reading this because it has
+#nothing to do with linked lists
 
 	# ---
 	#| ? |
@@ -139,6 +149,10 @@ class LinkedList(object):
 		print"Delete item at position", position
 
 
+	#    ---
+	#-->| ? |---
+	#|   ---   |
+	#|         v
 	def printInsert(self, prevPosition, item):
 		print ("Create a node, and link it to the previous node's link\n")
 		print (" ")*(VISUAL_SIZE*(prevPosition)+HALF_VISUAL_SIZE),
