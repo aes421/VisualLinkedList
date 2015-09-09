@@ -1,7 +1,8 @@
 from ListNode import ListNode
 
 VISUAL_SIZE = 9
-HALF_VISUAL_SIZE = 3
+HALF_VISUAL_SIZE = 5
+HALF_BLOCK_SIZE = 3
 
 class LinkedList(object):
 	def __init__(self):
@@ -68,10 +69,14 @@ class LinkedList(object):
 		self.size -= 1
 		self.printStruct()
 
+
 	def insert(self, position, item):
 		assert position <=  self.size-1
 		prevNode = self._search(position-1)
 		newNode = ListNode(item, prevNode.link)
+
+		print"To insert a new node containing", item, "at position", position
+		self.printInsert(position-1, newNode.item)
 		prevNode.link = newNode
 		self.size += 1
 		self.printStruct()
@@ -120,16 +125,54 @@ class LinkedList(object):
 	def printDelete(self, position):
 		print "Point item at position", position-1, "to item at position", position+1
 		print ("\n")
-		print (" ")*(VISUAL_SIZE*(position-1)+HALF_VISUAL_SIZE),
-		print ("-") * ((VISUAL_SIZE*2)+HALF_VISUAL_SIZE)
-		print (" ")*(VISUAL_SIZE*(position-1)+HALF_VISUAL_SIZE),
+		print (" ")*(VISUAL_SIZE*(position-1)+HALF_BLOCK_SIZE),
+		print ("-") * ((VISUAL_SIZE*2)+HALF_BLOCK_SIZE)
+		print (" ")*(VISUAL_SIZE*(position-1)+HALF_BLOCK_SIZE),
 		print ("|"),
 		print (" ")*((VISUAL_SIZE*2)-1),
 		print ("|")
-		print (" ")*(VISUAL_SIZE*(position-1)+HALF_VISUAL_SIZE),
+		print (" ")*(VISUAL_SIZE*(position-1)+HALF_BLOCK_SIZE),
 		print ("|"),
 		print (" ")*((VISUAL_SIZE*2)-1),
 		print ("v")
 		self.printStruct()
 		print"Delete item at position", position
+
+
+	def printInsert(self, prevPosition, item):
+		print ("Create a node, and link it to the previous node's link\n")
+		print (" ")*(VISUAL_SIZE*(prevPosition)+HALF_VISUAL_SIZE),
+		print (" ---")
+		print (" ")*(VISUAL_SIZE*(prevPosition)+HALF_VISUAL_SIZE),
+		print ("|"),
+		print(item),
+		print("|---")
+		print (" ")*(VISUAL_SIZE*(prevPosition)+HALF_VISUAL_SIZE),
+		print(" ---   |")
+		print(" ")*(VISUAL_SIZE*(prevPosition+1)+HALF_BLOCK_SIZE),
+		print("v")
+		self.printStruct()
+
+		print("Next, link the previous node to point at the new node\n")
+		print (" ")*(VISUAL_SIZE*(prevPosition)+HALF_VISUAL_SIZE),
+		print (" ---")
+		print (" ")*(VISUAL_SIZE*(prevPosition)+HALF_BLOCK_SIZE-1),
+		print ("-->|"),
+		print(item),
+		print("|---")
+		print(" ")*(VISUAL_SIZE*(prevPosition)+HALF_BLOCK_SIZE-1),
+		print("|   ---   |")
+		print(" ")*(VISUAL_SIZE*(prevPosition)+HALF_BLOCK_SIZE-1),
+		print("|"),
+		print(" ")*(VISUAL_SIZE-2),
+		print("v")
+		self.printStruct()
+
+		print("Slide the new node into place, removing the previous link between nodes\n")
+
+
+
+		
+
+
 				 
