@@ -1,6 +1,7 @@
 from ListNode import ListNode
 
 VISUAL_SIZE = 9
+HALF_VISUAL_SIZE = 3
 
 class LinkedList(object):
 	def __init__(self):
@@ -67,6 +68,14 @@ class LinkedList(object):
 		self.size -= 1
 		self.printStruct()
 
+	def insert(self, position, item):
+		assert position <=  self.size-1
+		prevNode = self._search(position-1)
+		newNode = ListNode(item, prevNode.link)
+		prevNode.link = newNode
+		self.size += 1
+		self.printStruct()
+
 		
 		
 
@@ -111,13 +120,13 @@ class LinkedList(object):
 	def printDelete(self, position):
 		print "Point item at position", position-1, "to item at position", position+1
 		print ("\n")
-		print (" ")*(VISUAL_SIZE*(position-1)+3),
-		print ("-") * ((VISUAL_SIZE*2)+3)
-		print (" ")*(VISUAL_SIZE*(position-1)+3),
+		print (" ")*(VISUAL_SIZE*(position-1)+HALF_VISUAL_SIZE),
+		print ("-") * ((VISUAL_SIZE*2)+HALF_VISUAL_SIZE)
+		print (" ")*(VISUAL_SIZE*(position-1)+HALF_VISUAL_SIZE),
 		print ("|"),
 		print (" ")*((VISUAL_SIZE*2)-1),
 		print ("|")
-		print (" ")*(VISUAL_SIZE*(position-1)+3),
+		print (" ")*(VISUAL_SIZE*(position-1)+HALF_VISUAL_SIZE),
 		print ("|"),
 		print (" ")*((VISUAL_SIZE*2)-1),
 		print ("v")
