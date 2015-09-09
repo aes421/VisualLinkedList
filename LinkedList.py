@@ -56,6 +56,17 @@ class LinkedList(object):
 			prevNode.link = prevNode.link.link
 		self.size -= 1
 		self.printStruct()
+
+
+	def pop(self):
+		assert self.size > 0
+		print("\nTo pop the last item, we must remove the link"),
+		print("between the second to last item and the node to delete")
+		node = self._search(self.size-2)
+		node.link = None
+		self.size -= 1
+		self.printStruct()
+
 		
 		
 

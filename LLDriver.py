@@ -11,3 +11,5 @@ LinkedList.append(2)
 LinkedList.append(3)
 
 LinkedList.delete(3)
+
+LinkedList.pop()
