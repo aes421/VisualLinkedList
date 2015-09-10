@@ -4,16 +4,22 @@ from LinkedList import LinkedList
 def commhelp():
 	print("The following commands are valid:")
 
-def insert():
+#Form: insert(position,item)
+def insert(UI):
 	print ("You are in insert")
+	command = UI[6:]
+	print(command)
 
-def delete():
+#Form: delete(position)
+def delete(UI):
 	print ("You are in delete")
 
+#Form: pop()
 def pop():
 	print ("You are in pop")
 
-def append():
+#Form: append(positon, item)
+def append(UI):
 	print ("You are in append")
 
 def default():
@@ -28,26 +34,22 @@ LinkedList = LinkedList()
 UI = raw_input("Enter a command or type help: ")
 
 while (UI != "quit"):
-	#Uses python dictionary functionality to make a clean
-	#switch like structure
-	#source: http://bytebaker.com/2008/11/03/switch-case-statement-in-python/
-	switch = {
-	"hel": commhelp,
-	"ins": insert,
-	"del": delete,
-	"pop": pop,
-	"app": append
-	}
 
 	#Chops the input to only 3 letters for the switch
-	UI = UI[:3]
+	UIchop = UI[:3]
 
-
-	try:
-		#uses the dictionary structure as case statements
-		switch[UI]()
-	except (KeyError):
-		#implements the switch statements default case
+	#determine which function the user is trying to call
+	if (UIchop == "hel"):
+		commhelp()
+	elif (UIchop == "ins"):
+		insert(UI)
+	elif (UIchop == "del"):
+		delete(UI)
+	elif (UIchop == "pop"):
+		pop()
+	elif (UIchop == "app"):
+		append(UI)
+	else:
 		default()
 
 	
