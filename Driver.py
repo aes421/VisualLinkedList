@@ -1,4 +1,5 @@
 from LinkedList import LinkedList
+import re
 
 
 def commhelp():
@@ -8,7 +9,9 @@ def commhelp():
 def insert(UI):
 	print ("You are in insert")
 	command = UI[6:]
-	print(command)
+	#Regular expression: (\(\d*,.\))
+	expression = re.compile('(\(\d*,.\))')
+	print (expression.match(command))
 
 #Form: delete(position)
 def delete(UI):
