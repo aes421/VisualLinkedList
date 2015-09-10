@@ -73,9 +73,13 @@ class LinkedList(object):
 
 
 	def insert(self, position, item):
+		print "size of list is: ", self.size
 		assert position <=  self.size-1
 		#Find the node before where we want to insert
-		prevNode = self._search(position-1)
+		if position != 0:
+			prevNode = self._search(position-1)
+		else:
+			prevNode = self._search(0)
 		#pass the link of the previous node into constructor
 		#so now the new node will point to the same thing
 		#as the previous node

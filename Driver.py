@@ -1,17 +1,43 @@
 from LinkedList import LinkedList
 import re
 
+LinkedList = LinkedList()
 
 def commhelp():
 	print("The following commands are valid:")
 
 #Form: insert(position,item)
 def insert(UI):
-	print ("You are in insert")
+	#chop the UI to get only (position,item)
 	command = UI[6:]
 	#Regular expression: (\(\d*,.\))
-	expression = re.compile('(\(\d*,.\))')
-	print (expression.match(command))
+	expression = re.compile('(\(\d*,.*\))')
+	if (expression.match(command) != None):
+		#get the position
+		pos = command[1]
+		i = 2
+		while command[i] != ",":
+			pos += command[i]
+			i += 1
+
+		#Check that position is a number
+			if (~pos.isdigit()):
+				break
+
+
+		#get the item
+		item = command[i+1]
+		i += 2
+		while command[i] != ")":
+			item += command[i]
+			i += 1
+
+		#called insert with pos, item
+		LinkedList.append(1)
+		LinkedList.insert(int(pos), item)
+
+
+
 
 #Form: delete(position)
 def delete(UI):
@@ -31,8 +57,6 @@ def default():
 
 
 
-
-LinkedList = LinkedList()
 
 UI = raw_input("Enter a command or type help: ")
 
