@@ -4,7 +4,11 @@ import re
 LinkedList = LinkedList()
 
 def commhelp():
-	print("The following commands are valid:")
+	print("The following commands are valid:\n")
+	print("1) insert(position,item): this function allows you to specify a"),
+	print("specific position in the linked list to insert an item.  Positions"),
+	print("for the linked list start with 0 as the first element.  Ex. insert(1,2)"),
+	print("will insert the number 2 at position 1\n")
 
 #Form: insert(position,item)
 def insert(UI):
