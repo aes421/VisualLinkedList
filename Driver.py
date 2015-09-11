@@ -29,7 +29,6 @@ def insert(UI):
 			if (~pos.isdigit()):
 				break
 
-
 		#get the item
 		item = command[i+1]
 		i += 2
@@ -38,7 +37,6 @@ def insert(UI):
 			i += 1
 
 		#called insert with pos, item
-		LinkedList.append(1)
 		LinkedList.insert(int(pos), item)
 
 
@@ -52,9 +50,23 @@ def delete(UI):
 def pop():
 	LinkedList.pop()
 
-#Form: append(positon, item)
+#Form: append(item)
 def append(UI):
 	print ("You are in append")
+	#chop UI to only (item)
+	command = UI[6:]
+	#verify that it is in the right form
+	#PossibleRegular expression: (\(\w+\)|\(\d+\))
+	expression = re.compile('\(.*\)')
+	if (expression.match(command) != None):
+		#get the item
+		item = command[1]
+		i = 2
+		while (command[i] != ")"):
+			item += command[i]
+			i += 1
+		#call append
+		LinkedList.append(item)
 
 def default():
 	print("Incorrect command form.  Please refer to help")
