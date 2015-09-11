@@ -9,7 +9,10 @@ def commhelp():
 	print("specific position in the linked list to insert an item.  Positions"),
 	print("for the linked list start with 0 as the first element.  Ex. insert(1,2)"),
 	print("will insert the number 2 at position 1\n")
-	print("2) pop(): this function will always remove the last item of the linked list.\n"),
+	print("2) pop(): this function will always remove the last item of the linked list. Ex. pop()\n")
+	print("3) append(item): this function allows you to specify an item and it will"),
+	print("add it to the end of the linked list. Ex. append(2) will add 2 to the end"),
+	print("of the linked list.")
 
 #Form: insert(position,item)
 def insert(UI):
